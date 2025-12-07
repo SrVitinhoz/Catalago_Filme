@@ -18,6 +18,26 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\vitor\OneDrive\Área de Trabalho\filme\CatalogoFilmes\CatalogoFilmes
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/vitor/OneDrive/Área de Trabalho/filme/CatalogoFilmes/CatalogoFilmes/Views/Filmes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbWVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vitor/OneDrive/Área de Trabalho/filme/CatalogoFilmes/CatalogoFilmes/Views/Filmes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbWVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vitor/OneDrive/Área de Trabalho/filme/CatalogoFilmes/CatalogoFilmes/Views/Filmes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbWVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vitor/OneDrive/Área de Trabalho/filme/CatalogoFilmes/CatalogoFilmes/Views/Filmes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbWVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vitor/OneDrive/Área de Trabalho/filme/CatalogoFilmes/CatalogoFilmes/Views/Filmes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbWVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/vitor/OneDrive/Área de Trabalho/filme/CatalogoFilmes/CatalogoFilmes/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -30,8 +50,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/vitor/OneDrive/Área de Trabalho/filme/CatalogoFilmes/CatalogoFilmes/Views/Shared/_FilmeCardPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9GaWxtZUNhcmRQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/vitor/OneDrive/Área de Trabalho/filme/CatalogoFilmes/CatalogoFilmes/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vitor/OneDrive/Área de Trabalho/filme/CatalogoFilmes/CatalogoFilmes/Views/Shared/_WeatherPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9XZWF0aGVyUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vitor/OneDrive/Área de Trabalho/filme/CatalogoFilmes/CatalogoFilmes/Views/Tmdb/Search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG1kYlxTZWFyY2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vitor/OneDrive/Área de Trabalho/filme/CatalogoFilmes/CatalogoFilmes/Views/Weather/WeatherBlock.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VhdGhlclxXZWF0aGVyQmxvY2suY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/vitor/OneDrive/Área de Trabalho/filme/CatalogoFilmes/CatalogoFilmes/Views/_ViewImports.cshtml]
