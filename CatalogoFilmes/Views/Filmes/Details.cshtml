@@ -1,18 +1,5 @@
-﻿@model TModel
+﻿@model CatalogoFilmes.Models.Filme
 
-@{
-    Layout = null;
-}
+<h2>@Model.Titulo</h2>
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
-</div>
-</body>
-</html>
+@await Html.PartialAsync("_FilmeCardPartial", Model)

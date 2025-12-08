@@ -1,2 +1,9 @@
-﻿@model TModel
+﻿@model CatalogoFilmes.Models.Filme
 
+<div class="card" style="width: 20rem;">
+    <img src="@Model.PosterPath" class="card-img-top" alt="@Model.Titulo" />
+    <div class="card-body">
+        <h5 class="card-title">@Model.Titulo</h5>
+        <p class="card-text">@Model.Sinopse</p>
+    </div>
+</div>

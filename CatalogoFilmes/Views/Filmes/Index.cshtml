@@ -1,18 +1,9 @@
-﻿@model TModel
+﻿@model IEnumerable<CatalogoFilmes.Models.Filme>
 
-@{
-    Layout = null;
-}
+<h2>Catálogo de Filmes</h2>
 
-<!DOCTYPE html>
+<a class="btn btn-primary" href="/Filmes/Create">Novo Filme</a>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
-</div>
-</body>
-</html>
+<hr />
+
+@await Html.PartialAsync("_FilmesListPartial", Model)

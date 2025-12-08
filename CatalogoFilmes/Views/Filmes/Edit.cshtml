@@ -1,18 +1,8 @@
-﻿@model TModel
+﻿@model CatalogoFilmes.Models.Filme
 
-@{
-    Layout = null;
-}
+<h2>Editar Filme</h2>
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
-</div>
-</body>
-</html>
+<form method="post">
+    @Html.EditorForModel()
+    <button class="btn btn-primary">Salvar Alterações</button>
+</form>

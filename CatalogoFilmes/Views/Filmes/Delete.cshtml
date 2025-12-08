@@ -1,18 +1,9 @@
-﻿@model TModel
+﻿@model CatalogoFilmes.Models.Filme
 
-@{
-    Layout = null;
-}
+<h2>Excluir Filme</h2>
 
-<!DOCTYPE html>
+<p>Tem certeza que deseja excluir <strong>@Model.Titulo</strong>?</p>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
-</div>
-</body>
-</html>
+<form method="post">
+    <button class="btn btn-danger">Excluir</button>
+</form>
