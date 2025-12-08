@@ -1,6 +1,10 @@
-﻿namespace CatalogoFilmes.Services.TMDb;
+﻿using CatalogoFilmes.Models.Tmdb;
 
-public class ITmdbApiService
+namespace CatalogoFilmes.Services.TMDb;
+
+public interface ITmdbApiService
 {
-    
+    Task<TmdbSearchResult> SearchMoviesAsync(string query, int page = 1);
+    Task<TmdbMovieDetails> GetMovieDetailsAsync(int tmdbId);
+    Task<TmdbConfiguration> GetConfigurationAsync();
 }

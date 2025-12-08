@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS Filmes (
                                       Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                      TmdbId INTEGER,
-                                      Titulo TEXT,
+                                      TmdbId INTEGER NOT NULL,
+                                      Titulo TEXT NOT NULL,
                                       TituloOriginal TEXT,
                                       Sinopse TEXT,
                                       DataLancamento TEXT,
@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS Filmes (
                                       CidadeReferencia TEXT,
                                       Latitude REAL,
                                       Longitude REAL,
-                                      DataCriacao TEXT,
-                                      DataAtualizacao TEXT
+                                      DataCriacao TEXT NOT NULL,
+                                      DataAtualizacao TEXT NOT NULL
 );
+

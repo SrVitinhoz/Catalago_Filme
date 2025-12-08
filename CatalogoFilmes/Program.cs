@@ -1,3 +1,4 @@
+using CatalogoFilmes;
 using CatalogoFilmes.Config;
 using CatalogoFilmes.Data;
 using CatalogoFilmes.Repository;

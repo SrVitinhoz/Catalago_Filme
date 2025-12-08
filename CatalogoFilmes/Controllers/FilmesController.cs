@@ -31,14 +31,22 @@ public class FilmesController : Controller
             return View(filme);
 
         await _repo.CreateAsync(filme);
+
         return RedirectToAction(nameof(Index));
+    }
+
+    public async Task<IActionResult> Details(int id)
+    {
+        var filme = await _repo.GetByIdAsync(id);
+        if (filme == null) return NotFound();
+
+        return View(filme);
     }
 
     public async Task<IActionResult> Edit(int id)
     {
         var filme = await _repo.GetByIdAsync(id);
-        if (filme == null)
-            return NotFound();
+        if (filme == null) return NotFound();
 
         return View(filme);
     }
@@ -50,14 +58,14 @@ public class FilmesController : Controller
             return View(filme);
 
         await _repo.UpdateAsync(filme);
+
         return RedirectToAction(nameof(Index));
     }
 
     public async Task<IActionResult> Delete(int id)
     {
         var filme = await _repo.GetByIdAsync(id);
-        if (filme == null)
-            return NotFound();
+        if (filme == null) return NotFound();
 
         return View(filme);
     }
@@ -67,14 +75,5 @@ public class FilmesController : Controller
     {
         await _repo.DeleteAsync(id);
         return RedirectToAction(nameof(Index));
-    }
-
-    public async Task<IActionResult> Details(int id)
-    {
-        var filme = await _repo.GetByIdAsync(id);
-        if (filme == null)
-            return NotFound();
-
-        return View(filme);
     }
 }

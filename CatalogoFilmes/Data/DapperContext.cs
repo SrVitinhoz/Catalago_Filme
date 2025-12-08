@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using Microsoft.Data.Sqlite;
 
 namespace CatalogoFilmes.Data;
 
@@ -8,8 +9,8 @@ public class DapperContext
 
     public DapperContext(IConfiguration configuration)
     {
-        // caminho relativo do SQLite
-        _connectionString = "Data Source=database.db";
+        _connectionString = configuration.GetConnectionString("DefaultConnection") 
+                            ?? "Data Source=filmes.db";
     }
 
     public IDbConnection CreateConnection()

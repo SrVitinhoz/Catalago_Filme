@@ -2,11 +2,11 @@
 
 namespace CatalogoFilmes.Repository;
 
-public class IFilmeRepository
+public interface IFilmeRepository
 {
     Task<IEnumerable<Filme>> ListAsync();
     Task<Filme?> GetByIdAsync(int id);
-    Task CreateAsync(Filme filme);
-    Task UpdateAsync(Filme filme);
-    Task DeleteAsync(int id);
+    Task<int> CreateAsync(Filme filme);
+    Task<bool> UpdateAsync(Filme filme);
+    Task<bool> DeleteAsync(int id);
 }
