@@ -1,10 +1,10 @@
 ﻿using CatalogoFilmes.Services.Cache;
 using CatalogoFilmes.Services.Tmdb;
-using CatalogoFilmes.Services.TMDb;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CatalogoFilmes.Controllers;
 
+[Route("tmdb")]
 public class TmdbController : Controller
 {
     private readonly ITmdbService _tmdbService;
@@ -21,23 +21,22 @@ public class TmdbController : Controller
         _logger = logger;
     }
 
-    // /tmdb/search?query=matrix
-    [HttpGet]
-    public async Task<IActionResult> Search(string query)
+    /// GET /tmdb/search?query=matrix
+    [HttpGet("search")]
+    public async Task<IActionResult> Search(string? query)
     {
         if (string.IsNullOrWhiteSpace(query))
             return View("Search", null);
 
         var cacheKey = $"tmdb_search_{query.ToLower()}";
-        var cached = _cache.Get<object>(cacheKey);
 
-        if (cached != null)
+        if (_cache.Get<object>(cacheKey) is object cached)
         {
-            _logger.LogInformation("TMDb search HIT cache para query: {Query}", query);
+            _logger.LogInformation("TMDb search HIT cache: {Query}", query);
             return View("Search", cached);
         }
 
-        _logger.LogInformation("TMDb search MISS cache para query: {Query}", query);
+        _logger.LogInformation("TMDb search MISS cache: {Query}", query);
         var result = await _tmdbService.SearchMoviesAsync(query);
 
         _cache.Set(cacheKey, result, TimeSpan.FromMinutes(10));
@@ -45,20 +44,19 @@ public class TmdbController : Controller
         return View("Search", result);
     }
 
-    // /tmdb/details/123
-    [HttpGet("tmdb/details/{id:int}")]
+    /// GET /tmdb/details/{id}
+    [HttpGet("details/{id:int}")]
     public async Task<IActionResult> Details(int id)
     {
-        var cacheKey = $"tmdb_movie_{id}";
-        var cached = _cache.Get<object>(cacheKey);
+        var cacheKey = $"tmdb_details_{id}";
 
-        if (cached != null)
+        if (_cache.Get<object>(cacheKey) is object cached)
         {
-            _logger.LogInformation("TMDb details HIT cache para Id={Id}", id);
+            _logger.LogInformation("TMDb details HIT cache para id={Id}", id);
             return View("Details", cached);
         }
 
-        _logger.LogInformation("TMDb details MISS cache para Id={Id}", id);
+        _logger.LogInformation("TMDb details MISS cache para id={Id}", id);
         var movie = await _tmdbService.GetMovieDetailsAsync(id);
 
         if (movie == null)

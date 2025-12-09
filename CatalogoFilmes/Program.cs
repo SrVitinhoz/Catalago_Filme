@@ -33,9 +33,9 @@ builder.Services.AddScoped<ITmdbApiService, TmdbApiService>();
 builder.Services.AddScoped<ITmdbService, TmdbService>();
 
 
-// servico WEATHER
+/*// servico WEATHER
 builder.Services.AddScoped<IWeatherApiService, WeatherApiService>();
-builder.Services.AddHttpClient<WeatherService>();
+builder.Services.AddHttpClient<WeatherService>();*/
 
 
 // servico de cache personalizado
@@ -46,6 +46,8 @@ builder.Services.Configure<CacheOptions>(
 
 
 var app = builder.Build();
+
+DatabaseInitializer.Initialize(builder.Configuration);
 
 if (!app.Environment.IsDevelopment())
 {

@@ -1,4 +1,5 @@
-﻿using CatalogoFilmes.Models.Weather;
+﻿/*using CatalogoFilmes.Models;
+using CatalogoFilmes.Models.Weather;
 using Microsoft.Extensions.Logging;
 
 namespace CatalogoFilmes.Services.Weather;
@@ -44,4 +45,4 @@ public class WeatherService : IWeatherService
 
         return await GetWeatherByCoordinatesAsync(geocode.Latitude, geocode.Longitude);
     }
-}
+}*/

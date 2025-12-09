@@ -1,18 +1,30 @@
-﻿@model TModel
+﻿@model CatalogoFilmes.Models.Tmdb.TmdbSearchResult
 
-@{
-    Layout = null;
+<h2>Resultados da Busca</h2>
+
+<form method="get" action="/tmdb/search">
+    <input type="text" name="query" class="form-control" placeholder="Buscar filmes..." />
+</form>
+
+<hr />
+
+@if (Model == null)
+{
+    <p>Digite algo para buscar.</p>
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
-</div>
-</body>
-</html>
+else if (!Model.Results.Any())
+{
+    <p>Nenhum resultado encontrado.</p>
+}
+else
+{
+    <ul>
+        @foreach (var filme in Model.Results)
+        {
+            <li>
+                <a href="/tmdb/details/@filme.Id">@filme.Title</a>
+                — @filme.Release_Date
+            </li>
+        }
+    </ul>
+}
