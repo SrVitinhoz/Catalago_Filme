@@ -1,6 +1,8 @@
-﻿namespace CatalogoFilmes.Services.Weather;
+﻿using CatalogoFilmes.Models.Weather;
 
-public class IWeatherApiService
+namespace CatalogoFilmes.Services.Weather;
+
+public interface IWeatherApiService
 {
-    
+    Task<WeatherResult?> GetWeatherAsync(double latitude, double longitude);
 }

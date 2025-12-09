@@ -1,0 +1,27 @@
+﻿@model IEnumerable<CatalogoFilmes.Models.Filme>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Título</th>
+        <th>Nota</th>
+        <th>Cidade</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var filme in Model)
+    {
+        <tr>
+            <td>@filme.Titulo</td>
+            <td>@filme.NotaMedia</td>
+            <td>@filme.CidadeReferencia</td>
+            <td>
+                <a href="/Filmes/Details/@filme.Id">Detalhes</a> |
+                <a href="/Filmes/Edit/@filme.Id">Editar</a> |
+                <a href="/Filmes/Delete/@filme.Id">Excluir</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

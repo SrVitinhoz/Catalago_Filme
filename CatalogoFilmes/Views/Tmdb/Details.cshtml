@@ -1,0 +1,30 @@
+﻿@model CatalogoFilmes.Models.Tmdb.TmdbMovieDetails
+
+<h2>@Model.Title</h2>
+
+@if (!string.IsNullOrWhiteSpace(Model.Poster_Path))
+{
+    <img src="https://image.tmdb.org/t/p/w300/@Model.Poster_Path" />
+}
+
+<p><strong>Sinopse:</strong> @Model.Overview</p>
+<p><strong>Idioma:</strong> @Model.Original_Language</p>
+<p><strong>Lançamento:</strong> @Model.Release_Date</p>
+<p><strong>Duração:</strong> @Model.Runtime min</p>
+<p><strong>Nota:</strong> @Model.Vote_Average</p>
+
+<h3>Gêneros</h3>
+<ul>
+    @foreach (var g in Model.Genres)
+    {
+        <li>@g.Name</li>
+    }
+</ul>
+
+<h3>Elenco</h3>
+<ul>
+    @foreach (var c in Model.Credits.Cast.Take(10))
+    {
+        <li>@c.Name — @c.Character</li>
+    }
+</ul>
