@@ -2,5 +2,5 @@
 
 public class WeatherOptions
 {
-    public string BaseUrl { get; set; } = string.Empty;
+    public string BaseUrl { get; set; } = "https://api.open-meteo.com/v1/";
 }

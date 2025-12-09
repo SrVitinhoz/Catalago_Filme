@@ -3,6 +3,7 @@ using CatalogoFilmes.Config;
 using CatalogoFilmes.Data;
 using CatalogoFilmes.Repository;
 using CatalogoFilmes.Services.Cache;
+using CatalogoFilmes.Services.Tmdb;
 using CatalogoFilmes.Services.TMDb;
 using CatalogoFilmes.Services.Weather;
 
@@ -29,14 +30,20 @@ builder.Services.AddScoped<IFilmeRepository, FilmeRepository>();
 
 // servico TMDB
 builder.Services.AddScoped<ITmdbApiService, TmdbApiService>();
+builder.Services.AddScoped<ITmdbService, TmdbService>();
 
 
 // servico WEATHER
 builder.Services.AddScoped<IWeatherApiService, WeatherApiService>();
+builder.Services.AddHttpClient<WeatherService>();
 
 
 // servico de cache personalizado
 builder.Services.AddSingleton<ICacheService, MemoryCacheService>();
+
+builder.Services.Configure<CacheOptions>(
+    builder.Configuration.GetSection("Cache"));
+
 
 var app = builder.Build();
 
