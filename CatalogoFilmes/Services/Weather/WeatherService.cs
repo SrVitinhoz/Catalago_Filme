@@ -1,4 +1,4 @@
-﻿/*using CatalogoFilmes.Models;
+﻿using CatalogoFilmes.Models;
 using CatalogoFilmes.Models.Weather;
 using Microsoft.Extensions.Logging;
 
@@ -17,32 +17,32 @@ public class WeatherService : IWeatherService
 
     public async Task<WeatherInfo?> GetWeatherByCoordinatesAsync(double lat, double lon)
     {
-        _logger.LogInformation("Clima por coordenadas: lat={Lat}, lon={Lon}", lat, lon);
+        _logger.LogInformation("Consultando clima por coordenadas: {lat}, {lon}", lat, lon);
 
         var result = await _api.GetWeatherAsync(lat, lon);
-        if (result == null || result.Current == null)
+        if (result == null || result.Current_Weather == null)
             return null;
 
         return new WeatherInfo
         {
             Latitude = result.Latitude,
             Longitude = result.Longitude,
-            Temperature = result.Current.Temperature,
-            WindSpeed = result.Current.WindSpeed,
-            WeatherCode = result.Current.WeatherCode,
-            Time = result.Current.Time
+            Temperature = result.Current_Weather.Temperature,
+            WindSpeed = result.Current_Weather.Windspeed,
+            Humidity = 0, // API gratuita não oferece
+            RetrievedAt = DateTime.UtcNow
         };
     }
 
     public async Task<WeatherInfo?> GetWeatherByCityAsync(string city)
     {
-        _logger.LogInformation("Clima por cidade: {City}", city);
+        _logger.LogInformation("Consultando clima para cidade: {city}", city);
 
-        // usa o geocoder do próprio Open-Meteo
-        var geocode = await _api.SearchCityAsync(city);
-        if (geocode == null)
+        var geo = await _api.SearchCityAsync(city);
+        var item = geo?.Results?.FirstOrDefault();
+        if (item == null)
             return null;
 
-        return await GetWeatherByCoordinatesAsync(geocode.Latitude, geocode.Longitude);
+        return await GetWeatherByCoordinatesAsync(item.Latitude, item.Longitude);
     }
-}*/
+}

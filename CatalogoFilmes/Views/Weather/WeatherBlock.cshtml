@@ -1,18 +1,16 @@
-﻿@model CatalogoFilmes.Models.Filme
+﻿@model CatalogoFilmes.Models.WeatherInfo
 
-@{
-    Layout = null;
-}
+<div class="p-3 bg-light rounded shadow-sm">
+    <h4>🌦 Previsão do Tempo</h4>
 
-<!DOCTYPE html>
+    <p><strong>Cidade:</strong> @Model.City</p>
+    <p><strong>Latitude:</strong> @Model.Latitude</p>
+    <p><strong>Longitude:</strong> @Model.Longitude</p>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
+    <p><strong>🌡 Temperatura:</strong> @Model.Temperature °C</p>
+    <p><strong>💨 Vento:</strong> @Model.WindSpeed km/h</p>
+
+    <p class="text-muted">
+        Última atualização: @Model.RetrievedAt.ToLocalTime()
+    </p>
 </div>
-</body>
-</html>
