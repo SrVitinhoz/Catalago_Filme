@@ -9,7 +9,6 @@ using CatalogoFilmes.Services.Weather;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 // config tipadas
 builder.Services.Configure<TmdbOptions>(
     builder.Configuration.GetSection("TMDB"));
@@ -17,33 +16,26 @@ builder.Services.Configure<TmdbOptions>(
 builder.Services.Configure<WeatherOptions>(
     builder.Configuration.GetSection("OpenMeteo"));
 
-
-// servico core
+// servicos core
 builder.Services.AddMemoryCache();
 builder.Services.AddControllersWithViews();
 
-
-// repositorio (SEM MIGRATIONS)
+// repositorio
 builder.Services.AddSingleton<DapperContext>();
 builder.Services.AddScoped<IFilmeRepository, FilmeRepository>();
 
-
-// servico TMDB
+// TMDB
 builder.Services.AddScoped<ITmdbApiService, TmdbApiService>();
 builder.Services.AddScoped<ITmdbService, TmdbService>();
 
+// WEATHER (Open-Meteo)
+builder.Services.AddHttpClient<IWeatherApiService, WeatherApiService>();
+builder.Services.AddScoped<IWeatherService, WeatherService>();
 
-/*// servico WEATHER
-builder.Services.AddScoped<IWeatherApiService, WeatherApiService>();
-builder.Services.AddHttpClient<WeatherService>();*/
-
-
-// servico de cache personalizado
+// cache customizado
 builder.Services.AddSingleton<ICacheService, MemoryCacheService>();
-
 builder.Services.Configure<CacheOptions>(
     builder.Configuration.GetSection("Cache"));
-
 
 var app = builder.Build();
 

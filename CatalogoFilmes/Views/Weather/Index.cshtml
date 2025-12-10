@@ -1,0 +1,123 @@
+﻿@{
+    ViewData["Title"] = "Previsão do Tempo";
+}
+
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4">🌤️ Previsão do Tempo</h2>
+
+    <div class="row">
+
+        <!-- Buscar por cidade -->
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    Buscar por Cidade
+                </div>
+                <div class="card-body">
+                    <form id="cityForm">
+                        <div class="mb-3">
+                            <label class="form-label">Nome da Cidade</label>
+                            <input type="text" class="form-control" id="cityInput" placeholder="Ex: Porto Velho" required />
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            Buscar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buscar por coordenadas -->
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    Buscar por Coordenadas
+                </div>
+                <div class="card-body">
+                    <form id="coordsForm">
+                        <div class="mb-3">
+                            <label class="form-label">Latitude</label>
+                            <input type="number" step="0.0001" class="form-control" id="latInput" placeholder="-10.90" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Longitude</label>
+                            <input type="number" step="0.0001" class="form-control" id="lonInput" placeholder="-61.90" required />
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">
+                            Buscar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESULTADO -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div id="weatherResult"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Buscar cidade
+        document.getElementById("cityForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const city = document.getElementById("cityInput").value;
+            const response = await fetch(`/weather/city?city=${city}`);
+
+            const container = document.getElementById("weatherResult");
+
+            if (!response.ok) {
+                container.innerHTML = `<div class="alert alert-danger">Cidade não encontrada.</div>`;
+                return;
+            }
+
+            const data = await response.json();
+            renderWeather(data);
+        });
+
+        // Buscar coordenadas
+        document.getElementById("coordsForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const lat = document.getElementById("latInput").value;
+            const lon = document.getElementById("lonInput").value;
+
+            const response = await fetch(`/weather/coords?lat=${lat}&lon=${lon}`);
+
+            const container = document.getElementById("weatherResult");
+
+            if (!response.ok) {
+                container.innerHTML = `<div class="alert alert-danger">Coordenadas inválidas.</div>`;
+                return;
+            }
+
+            const data = await response.json();
+            renderWeather(data);
+        });
+
+        // Renderização do card
+        function renderWeather(data) {
+            document.getElementById("weatherResult").innerHTML = `
+                <div class="card mt-3 shadow">
+                    <div class="card-header bg-info text-white">
+                        Resultado
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Temperatura:</strong> ${data.temperature}°C</p>
+                        <p><strong>Vento:</strong> ${data.windspeed} km/h</p>
+                        <p><strong>Direção do Vento:</strong> ${data.winddirection}°</p>
+                        <p><strong>Clima:</strong> ${data.weathercode_description}</p>
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+}
