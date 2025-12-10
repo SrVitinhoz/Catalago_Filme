@@ -8,24 +8,23 @@ namespace CatalogoFilmes.Services.Weather;
 public class WeatherApiService : IWeatherApiService
 {
     private readonly HttpClient _http;
+    private readonly WeatherOptions _options;
 
     public WeatherApiService(HttpClient http, IOptions<WeatherOptions> options)
     {
-        http.BaseAddress = new Uri(options.Value.BaseUrl);
         _http = http;
+        _options = options.Value;
     }
 
     public async Task<WeatherResult?> GetWeatherAsync(double latitude, double longitude)
     {
-        return await _http.GetFromJsonAsync<WeatherResult>(
-            $"forecast?latitude={latitude}&longitude={longitude}&current_weather=true"
-        );
+        var url = $"{_options.BaseUrl}forecast?latitude={latitude}&longitude={longitude}&current_weather=true";
+        return await _http.GetFromJsonAsync<WeatherResult>(url);
     }
 
     public async Task<GeoResult?> SearchCityAsync(string city)
     {
-        return await _http.GetFromJsonAsync<GeoResult>(
-            $"search?name={city}&count=1&language=pt&format=json"
-        );
+        var url = $"{_options.GeoUrl}search?name={city}&count=1&language=pt&format=json";
+        return await _http.GetFromJsonAsync<GeoResult>(url);
     }
 }
